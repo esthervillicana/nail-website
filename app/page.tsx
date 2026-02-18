@@ -166,7 +166,7 @@ export default function Home() {
               {images.map((src, i) => (
                 <div
                   key={i}
-                  ref={(el) => (imageRefs.current[i] = el!)}
+                  ref={(el) => {imageRefs.current[i] = el!;}}
                   className="relative w-[280px] h-[350px] flex-shrink-0 rounded-3xl overflow-hidden transition-transform duration-300"
                   style={{
                     opacity: scrollState[i]?.opacity || 0.7,
