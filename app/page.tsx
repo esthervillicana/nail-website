@@ -131,7 +131,9 @@ export default function Home() {
       </div>
 
       {/* Content card */}
-      <section className="flex items-center justify-center pt-24 pb-10 px-6">
+      <section className="flex items-center justify-center pt-16 sm:pt-20 md:pt-24
+                            pb-8 sm:pb-10
+                           px-4 sm:px-6 pb-10 px-6">
         <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-[#B8860B]">
             @setsbyesther
@@ -168,7 +170,7 @@ export default function Home() {
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className={`absolute left-6 top-1/2 -translate-y-1/2 z-20 text-3xl ${
+            className={`hidden sm:block absolute left-6 top-1/2 -translate-y-1/2 z-20 text-3xl ${
               !canScrollLeft ? "opacity-30 cursor-not-allowed" : "opacity-100"
             }`}
           >
@@ -177,7 +179,7 @@ export default function Home() {
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className={`absolute right-6 top-1/2 -translate-y-1/2 z-20 text-3xl ${
+            className={`hidden sm:block absolute right-6 top-1/2 -translate-y-1/2 z-20 text-3xl ${
               !canScrollRight ? "opacity-30 cursor-not-allowed" : "opacity-100"
             }`}
           >
@@ -189,7 +191,7 @@ export default function Home() {
             <div
               ref={scrollRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto scroll-smooth gap-8 px-40 py-4"
+              className="flex overflow-x-auto scroll-smooth gap-8 px-4 sm:px-16 md:px-24 lg:px-40 py-4"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none", maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)", maskRepeat: "no-repeat", maskSize: "cover" }}
             >
               <style>{`div::-webkit-scrollbar { display: none; }`}</style>
