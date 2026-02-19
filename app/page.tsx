@@ -131,10 +131,11 @@ export default function Home() {
       </div>
 
       {/* Content card */}
-      <section className="flex items-center justify-center pt-12 sm:pt-16 md:pt-20pb-6 sm:pb-8
-                           px-4 sm:px-6 pb-10 px-6">
+      <section className="flex items-center justify-center 
+                  pt-16 sm:pt-20 md:pt-24
+                  ">
         <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-[#B8860B]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-white">
             @setsbyesther
           </h1>
           <p className="text-neutral mb-6">Looking to get your next set?</p>
@@ -160,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section className="relative z-10 mt-10 sm:mt-14 md:mt-20 w-full flex justify-center">
+      <section className="relative z-10 mt-16  w-full flex justify-center">
         <div className="w-full max-w-5xl px-4 sm:px-6 md:px-8 relative">
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl
                         mb-6 sm:mb-8 md:mb-10 text-center">My Work</h2>
