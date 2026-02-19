@@ -159,9 +159,10 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section className="relative z-10 mt-6 w-full flex justify-center">
-        <div className="w-full max-w-5xl relative">
-          <h2 className="text-white text-3xl mb-10 text-center">My Work</h2>
+      <section className="relative z-10 mt-10 sm:mt-14 md:mt-20 w-full flex justify-center">
+        <div className="w-full max-w-5xl px-4 sm:px-6 md:px-8 relative">
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl
+                        mb-6 sm:mb-8 md:mb-10 text-center">My Work</h2>
 
           {/* Arrows */}
           <button
