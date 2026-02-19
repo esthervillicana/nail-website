@@ -72,7 +72,36 @@ export default function Home() {
   };
 
   return (
-    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center`}>
+    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center`}
+    >
+      <a
+  href="https://www.instagram.com/setsbyesther"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    fixed bottom-6 right-6 
+    z-50
+    w-12 h-12
+    rounded-full 
+    bg-white/20 backdrop-blur-md 
+    flex items-center justify-center
+    hover:scale-110 transition-transform
+  "
+>
+  {/* Instagram logo using react-icons */}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="#efefef"
+    className="w-6 h-6"
+  >
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.918 4.918 0 011.675 1.09 4.918 4.918 0 011.09 1.675c.163.46.35 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.918 4.918 0 01-1.09 1.675 4.918 4.918 0 01-1.675 1.09c-.46.163-1.26.35-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.918 4.918 0 01-1.675-1.09 4.918 4.918 0 01-1.09-1.675c-.163-.46-.35-1.26-.403-2.43-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.918 4.918 0 011.09-1.675 4.918 4.918 0 011.675-1.09c.46-.163 1.26-.35 2.43-.403 1.266-.058 1.646-.07 4.85-.07zm0-2.163C8.756 0 8.333.013 7.052.072 5.78.13 4.856.308 4.05.6a7.07 7.07 0 00-2.56 1.6 7.07 7.07 0 00-1.6 2.56c-.292.806-.47 1.73-.528 3C-.013 8.333 0 8.756 0 12c0 3.244.013 3.667.072 4.948.058 1.27.236 2.194.528 3a7.07 7.07 0 001.6 2.56 7.07 7.07 0 002.56 1.6c.806.292 1.73.47 3 .528C8.333 23.987 8.756 24 12 24s3.667-.013 4.948-.072c1.27-.058 2.194-.236 3-.528a7.07 7.07 0 002.56-1.6 7.07 7.07 0 001.6-2.56c.292-.806.47-1.73.528-3 .058-1.281.072-1.704.072-4.948s-.013-3.667-.072-4.948c-.058-1.27-.236-2.194-.528-3a7.07 7.07 0 00-1.6-2.56 7.07 7.07 0 00-2.56-1.6c-.806-.292-1.73-.47-3-.528C15.667.013 15.244 0 12 0z"/>
+    <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8z"/>
+    <circle cx="18.406" cy="5.594" r="1.44"/>
+  </svg>
+</a>
+      
+
       {/* Background */}
       <div className="absolute inset-0 z-[-1]">
         <div className="absolute inset-0 bg-black" />
@@ -81,8 +110,8 @@ export default function Home() {
           style={{
             background: `
               radial-gradient(circle at 25% 25%, #edbcf0, transparent 40%),
-              radial-gradient(circle at 70% 40%, #64d2f1, transparent 50%),
-              radial-gradient(circle at 50% 70%, #ff4c4c, transparent 50%)
+              radial-gradient(circle at 75% 40%, #64d2f1, transparent 50%),
+              radial-gradient(circle at 25% 70%, #ff4c4c, transparent 50%)
             `,
             mixBlendMode: "screen",
             filter: "blur(80px)",
@@ -103,8 +132,8 @@ export default function Home() {
 
       {/* Content card */}
       <section className="flex items-center justify-center pt-24 pb-10 px-6">
-        <div className="relative z-10 w-full max-w-lg p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-[#c6a53a]">
+        <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-[#B8860B]">
             @setsbyesther
           </h1>
           <p className="text-neutral mb-6">Looking to get your next set?</p>
@@ -167,7 +196,7 @@ export default function Home() {
                 <div
                   key={i}
                   ref={(el) => {imageRefs.current[i] = el!;}}
-                  className="relative w-[280px] h-[350px] flex-shrink-0 rounded-3xl overflow-hidden transition-transform duration-300"
+                  className="relative w-[220px] sm:w-[260px] md:w-[280px] h-[300px] sm:h-[330px] md:h-[350px] flex-shrink-0 rounded-3xl overflow-hidden transition-transform duration-300"
                   style={{
                     opacity: scrollState[i]?.opacity || 0.7,
                     transform: `scale(${scrollState[i]?.scale || 0.9})`,
