@@ -72,8 +72,8 @@ export default function Home() {
   };
 
   return (
-    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center`}
-    >
+    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center`}>
+
       <a
   href="https://www.instagram.com/setsbyesther"
   target="_blank"
@@ -131,8 +131,7 @@ export default function Home() {
       </div>
 
       {/* Content card */}
-      <section className="flex items-center justify-center pt-16 sm:pt-20 md:pt-24
-                            pb-8 sm:pb-10
+      <section className="flex items-center justify-center pt-12 sm:pt-16 md:pt-20pb-6 sm:pb-8
                            px-4 sm:px-6 pb-10 px-6">
         <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-[#B8860B]">
