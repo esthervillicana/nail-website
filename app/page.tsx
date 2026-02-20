@@ -135,7 +135,8 @@ export default function Home() {
                   pt-16 sm:pt-20 md:pt-24
                   ">
         <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-white 
+          [ text-shadow:0_1px_0_rgba(255,255,255,0.2) ] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
             @setsbyesther
           </h1>
           <p className="text-neutral mb-6">Looking to get your next set?</p>
@@ -162,9 +163,9 @@ export default function Home() {
 
       {/* Gallery */}
       <section className="relative z-10 mt-16  w-full flex justify-center">
-        <div className="w-full max-w-5xl px-4 sm:px-6 md:px-8 relative">
+        <div className="w-full max-w-5xl px-4 sm:px-6 md:px-8 relative ">
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl
-                        mb-6 sm:mb-8 md:mb-10 text-center">My Work</h2>
+                        mb-6 sm:mb-8 md:mb-10 text-center ">My Work</h2>
 
           {/* Arrows */}
           <button
