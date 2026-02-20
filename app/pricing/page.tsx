@@ -1,11 +1,17 @@
 "use client";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MouseEvent } from "react";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
-const services = [
+interface Service {
+  title: string;
+  description: string;
+  price: string;
+}
+
+const services: Service[] = [
   {
     title: "Gel Manicure",
     description: "Includes cuticle prep, shaping, and gel polish application",
@@ -24,22 +30,24 @@ const services = [
 ];
 
 export default function Pricing() {
-  const [flipped, setFlipped] = useState({});
-  const containerRef = useRef(null);
+  // flipped maps card index to boolean
+  const [flipped, setFlipped] = useState<Record<number, boolean>>({});
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const toggleFlip = (index) => {
+  const toggleFlip = (index: number) => {
     setFlipped((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  // Unflip when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent<Document>) => {
+      // TypeScript-safe: check ref
+      if (containerRef.current && event.target instanceof Node && !containerRef.current.contains(event.target)) {
         setFlipped({});
       }
     };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+
+    document.addEventListener("click", handleClickOutside as any); // cast because TS expects a DOM handler
+    return () => document.removeEventListener("click", handleClickOutside as any);
   }, []);
 
   return (
@@ -53,17 +61,15 @@ export default function Pricing() {
       </div>
       <div className="absolute inset-0 bg-black/60 -z-10" />
 
-      {/* Heading */}
       <h1 className="text-5xl font-bold text-white text-center drop-shadow-lg">Pricing</h1>
 
-      {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mt-16">
         {services.map((service, index) => (
           <div
             key={index}
             className="group w-72 h-96 [perspective:1200px]"
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent document click from firing
+            onClick={(e: MouseEvent<HTMLDivElement>) => {
+              e.stopPropagation();
               toggleFlip(index);
             }}
           >
