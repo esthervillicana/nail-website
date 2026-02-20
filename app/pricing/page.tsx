@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -24,15 +24,29 @@ const services = [
 ];
 
 export default function Pricing() {
-  // Track which cards are flipped
   const [flipped, setFlipped] = useState({});
+  const containerRef = useRef(null);
 
   const toggleFlip = (index) => {
     setFlipped((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+  // Unflip when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setFlipped({});
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center py-24 px-6 overflow-hidden`}>
+    <main
+      ref={containerRef}
+      className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center py-24 px-6 overflow-hidden`}
+    >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image src="/images/pricing.jpg" alt="Nail background" fill priority className="object-cover" />
@@ -48,7 +62,10 @@ export default function Pricing() {
           <div
             key={index}
             className="group w-72 h-96 [perspective:1200px]"
-            onClick={() => toggleFlip(index)}
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent document click from firing
+              toggleFlip(index);
+            }}
           >
             <div
               className={`relative w-full h-full transition-transform duration-[1300ms] ease-[cubic-bezier(0.25,0.8,0.25,1)] shadow-[0_25px_60px_rgba(0,0,0,0.5)] [transform-style:preserve-3d] 
