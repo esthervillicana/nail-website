@@ -1,7 +1,7 @@
+
 "use client";
-import Image from "next/image";
+
 import { Playfair_Display } from "next/font/google";
-import { useState, useEffect, useRef, MouseEvent } from "react";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -30,87 +30,87 @@ const services: Service[] = [
 ];
 
 export default function Pricing() {
-  // flipped maps card index to boolean
-  const [flipped, setFlipped] = useState<Record<number, boolean>>({});
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const toggleFlip = (index: number) => {
-    setFlipped((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent<Document>) => {
-      // TypeScript-safe: check ref
-      if (containerRef.current && event.target instanceof Node && !containerRef.current.contains(event.target)) {
-        setFlipped({});
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside as any); // cast because TS expects a DOM handler
-    return () => document.removeEventListener("click", handleClickOutside as any);
-  }, []);
-
   return (
     <main
-      ref={containerRef}
-    className={`${playfair.className} relative flex-1 flex flex-col items-center justify-center py-8 px-6 overflow-hidden`}   
-     >
-      
+      className={`${playfair.className} relative flex-1 flex flex-col items-center py-12 px-6 overflow-hidden`}
+    >
+      {/* Heading */}
+      <h1 className="text-5xl font-bold text-white text-center drop-shadow-lg">
+        Pricing
+      </h1>
 
-      <h1 className="text-5xl font-bold text-white text-center drop-shadow-lg">Pricing</h1>
+      <p className="mt-4 text-white/70 text-center text-sm sm:text-base">
+        Explore my services and find your next favorite set.
+      </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mt-16">
+      {/* Service Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mt-14 w-full max-w-6xl">
         {services.map((service, index) => (
           <div
             key={index}
-            className="group w-72 h-96 [perspective:1200px]"
-            onClick={(e: MouseEvent<HTMLDivElement>) => {
-              e.stopPropagation();
-              toggleFlip(index);
-            }}
+            className="group relative rounded-2xl border-2 border-[#a8872a] bg-white/[0.08] backdrop-blur-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_55px_rgba(198,165,58,0.15)]"
           >
-            <div
-              className={`relative w-full h-full transition-transform duration-[1300ms] ease-[cubic-bezier(0.25,0.8,0.25,1)] shadow-[0_25px_60px_rgba(0,0,0,0.5)] [transform-style:preserve-3d] 
-                ${flipped[index] ? "[transform:rotateY(180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}
-            >
-              {/* FRONT */}
-              <div className="absolute inset-0 [backface-visibility:hidden] [transform:translateZ(10px)]">
-                <div className="relative w-full h-full rounded-2xl border-[3px] border-[#c6a53a] shadow-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-white/25 backdrop-blur-xl" />
-                  <div className="relative z-10 h-full flex items-center justify-center text-white">
-                    <span className="text-2xl font-semibold text-center px-4">{service.title}</span>
-                  </div>
+            {/* Photo Placeholder */}
+            <div className="relative h-64 w-full p-3">
+              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl border border-[#c6a53a]/40 bg-black/20">
+                <div className="flex flex-col items-center gap-3 text-white/40">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="42"
+                    height="42"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="m21 15-5-5L5 21" />
+                  </svg>
+                  <span className="text-xs tracking-[0.2em] uppercase">
+                    Photo coming soon
+                  </span>
                 </div>
+              </div>
+            </div>
+
+            {/* Service Details */}
+            <div className="flex flex-col items-center text-center px-6 pb-7">
+              <h2 className="text-2xl font-semibold text-white">
+                {service.title}
+              </h2>
+
+              <p className="mt-3 min-h-[48px] text-sm leading-relaxed text-white/70">
+                {service.description}
+              </p>
+
+              <div className="mt-5 mb-5">
+                <span className="text-3xl font-bold text-[#e4c66e]">
+                  {service.price}
+                </span>
               </div>
 
-              {/* BACK */}
-              <div className="absolute inset-0 [transform:rotateY(180deg)_translateZ(10px)] [backface-visibility:hidden]">
-                <div className="relative w-full h-full rounded-2xl border-[3px] border-[#c6a53a] shadow-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-white/25 backdrop-blur-xl" />
-                  <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white p-6">
-                    <p className="mb-4">{service.description}</p>
-                    <p className="text-2xl font-bold">{service.price}</p>
-                    <a
-                      href="/booking"
-                      className="mt-4 px-6 py-3 rounded-full inline-block text-white transition-all duration-[1100ms] ease-out hover:text-[#c6a53a] hover:shadow-lg"
-                      style={{
-                        background: `linear-gradient(
-                          115deg,
-                          #6e5a17 0%,
-                          #a8872a 20%,
-                          #c6a53a 40%,
-                          #f2e3a2 50%,
-                          #c6a53a 60%,
-                          #a8872a 80%,
-                          #6e5a17 100%
-                        )`,
-                      }}
-                    >
-                      Book Now
-                    </a>
-                  </div>
-                </div>
-              </div>
+              {/* Book Button */}
+              <a
+              href={`/booking?service=${encodeURIComponent(service.title)}`}
+                className="inline-block rounded-full px-9 py-3 text-white font-semibold tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(198,165,58,0.3)]"
+                style={{
+                  background: `linear-gradient(
+                    115deg,
+                    #6e5a17 0%,
+                    #a8872a 20%,
+                    #c6a53a 40%,
+                    #f2e3a2 50%,
+                    #c6a53a 60%,
+                    #a8872a 80%,
+                    #6e5a17 100%
+                  )`,
+                }}
+              >
+                Book Now
+              </a>
             </div>
           </div>
         ))}

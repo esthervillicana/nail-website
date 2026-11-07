@@ -109,7 +109,25 @@ export default function BookingPage() {
       if (error) {
         setServiceError(error.message);
       } else {
-        setServices(data ?? []);
+        const loadedServices = data ?? [];
+
+        setServices(loadedServices);
+
+        // Check whether a service was passed from the pricing page.
+        const requestedService = new URLSearchParams(
+          window.location.search
+        ).get("service");
+
+        if (requestedService) {
+          const matchingService = loadedServices.find(
+            (item) =>
+              item.name.toLowerCase() === requestedService.toLowerCase()
+          );
+
+          if (matchingService) {
+            setService(matchingService.id);
+          }
+        }
       }
 
       setServiceLoading(false);
