@@ -261,15 +261,26 @@ export default function BookingPage() {
         }
       );
 
-      if (error) {
-        throw new Error(error.message);
-      }
+    if (error) throw new Error(error.message);
+    if (!data) throw new Error("The appointment request could not be confirmed.");
 
-      if (!data) {
-        throw new Error("The appointment request could not be confirmed.");
-      }
+    // Send an email notification to you about the new request.
+    try {
+      await fetch("/api/send-new-appointment-notification", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          appointmentId: data,
+        }),
+      });
+    } catch (notificationError) {
+      console.error("Could not send owner notification:", notificationError);
+    }
 
-      setRequestSubmitted(true);
+// Show the customer their successful submission.
+setRequestSubmitted(true);
       setValidationMessage("");
     } catch (error) {
       setSubmissionError(
