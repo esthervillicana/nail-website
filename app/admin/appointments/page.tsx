@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -159,65 +158,66 @@ export default function AdminAppointmentsPage() {
     setLoading(false);
   }
 
+  async function updateStatus(
+    appointmentId: string,
+    newStatus: Appointment["status"]
+  ) {
+    const confirmed = window.confirm(
+      `Are you sure you want to ${newStatus} this appointment?`
+    );
 
-async function updateStatus(
-  appointmentId: string,
-  newStatus: Appointment["status"]
-) {
-  const confirmed = window.confirm(
-    `Are you sure you want to ${newStatus} this appointment?`
-  );
+    if (!confirmed) return;
 
-  if (!confirmed) return;
+    setUpdatingId(appointmentId);
+    setError("");
 
-  setUpdatingId(appointmentId);
-  setError("");
+    const { error: updateError } = await supabase
+      .from("appointments")
+      .update({ status: newStatus })
+      .eq("id", appointmentId);
 
-  const { error: updateError } = await supabase
-    .from("appointments")
-    .update({ status: newStatus })
-    .eq("id", appointmentId);
+    if (updateError) {
+      setError(updateError.message);
+      setUpdatingId("");
+      return;
+    }
 
-  if (updateError) {
-    setError(updateError.message);
-    setUpdatingId("");
-    return;
-  }
-
-  // Send an email after a successful approval or decline.
+    // Send an email after a successful approval, decline, or cancellation.
     if (
-    newStatus === "approved" ||
-    newStatus === "declined" ||
-    newStatus === "cancelled"
-    ) { 
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+      newStatus === "approved" ||
+      newStatus === "declined" ||
+      newStatus === "cancelled"
+    ) {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
-    if (!session) {
-      setError("Appointment updated, but no email could be sent because your session expired.");
-    } else {
+      if (!session) {
+        setError(
+          "Appointment updated, but no email could be sent because your session expired."
+        );
+      } else {
         const emailResponse = await fetch("/api/send-appointment-email", {
-        method: "POST",
-        headers: {
+          method: "POST",
+          headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify({ appointmentId }),
+          },
+          body: JSON.stringify({ appointmentId }),
         });
 
         if (!emailResponse.ok) {
-        const result = await emailResponse.json();
-        setError(
+          const result = await emailResponse.json();
+          setError(
             `Appointment updated, but email notification failed: ${result.error}`
-        );
+          );
+        }
       }
     }
-  }
 
-  await loadAppointments();
-  setUpdatingId("");
-}
+    await loadAppointments();
+    setUpdatingId("");
+  }
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -250,7 +250,7 @@ async function updateStatus(
       <div className="mx-auto max-w-5xl">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-semibold text-[#edbcf0]">
+            <h1 className="text-3xl font-semibold text-white">
               Appointments
             </h1>
             <p className="mt-2 text-gray-400">
@@ -261,13 +261,13 @@ async function updateStatus(
           <div className="flex gap-3">
             <button
               onClick={() => router.push("/admin")}
-              className="rounded-lg border border-white/20 px-4 py-2 text-sm transition hover:bg-white/10"
+              className="rounded-lg border border-white/20 px-4 py-2 text-sm transition hover:border-[#c6a53a] hover:bg-white/10 focus:border-[#c6a53a] active:border-[#c6a53a]"
             >
               Dashboard
             </button>
             <button
               onClick={handleLogout}
-              className="rounded-lg border border-white/20 px-4 py-2 text-sm transition hover:bg-white/10"
+              className="rounded-lg border border-white/20 px-4 py-2 text-sm transition hover:border-[#c6a53a] hover:bg-white/10 focus:border-[#c6a53a] active:border-[#c6a53a]"
             >
               Log Out
             </button>
@@ -279,9 +279,9 @@ async function updateStatus(
             <button
               key={status}
               onClick={() => setActiveStatus(status)}
-              className={`rounded-xl border p-4 text-left transition ${
+              className={`rounded-xl border p-4 text-left transition hover:border-[#c6a53a] ${
                 activeStatus === status
-                  ? "border-[#edbcf0] bg-[#edbcf0]/10"
+                  ? "border-[#c6a53a] bg-[#c6a53a]/10"
                   : "border-white/15 bg-white/5 hover:bg-white/10"
               }`}
             >
@@ -307,7 +307,7 @@ async function updateStatus(
           <button
             onClick={loadAppointments}
             disabled={loading}
-            className="text-sm text-[#edbcf0] transition hover:underline disabled:opacity-50"
+            className="text-sm text-white transition hover:text-[#c6a53a] hover:underline disabled:opacity-50"
           >
             Refresh
           </button>
@@ -345,7 +345,7 @@ async function updateStatus(
                     )}
                   </div>
 
-                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs capitalize text-[#edbcf0]">
+                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs capitalize text-white">
                     {appointment.status}
                   </span>
                 </div>
@@ -426,7 +426,7 @@ async function updateStatus(
                           <img
                             src={photo.url}
                             alt="Customer inspiration"
-                            className="h-24 w-24 rounded-lg border border-white/15 object-cover transition hover:opacity-80"
+                            className="h-24 w-24 rounded-lg border border-white/15 object-cover transition hover:border-[#c6a53a] hover:opacity-80"
                           />
                         </a>
                       ))}
@@ -441,7 +441,7 @@ async function updateStatus(
                         updateStatus(appointment.id, "approved")
                       }
                       disabled={updatingId === appointment.id}
-                      className="rounded-lg border border-[#64d2f1]/50 bg-[#64d2f1]/10 px-5 py-2 text-sm text-[#64d2f1] transition hover:bg-[#64d2f1]/20 disabled:opacity-50"
+                      className="rounded-lg border border-[#c6a53a]/50 bg-[#c6a53a]/10 px-5 py-2 text-sm text-white transition hover:border-[#c6a53a] hover:bg-[#c6a53a]/20 disabled:opacity-50"
                     >
                       Approve
                     </button>
@@ -485,4 +485,3 @@ async function updateStatus(
     </main>
   );
 }
-

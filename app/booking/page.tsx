@@ -285,10 +285,10 @@ export default function BookingPage() {
   const selectedService = services.find((item) => item.id === service);
 
   return (
-    <main className="min-h-screen bg-[#09090b] px-5 py-16 text-white">
+<main className="min-h-screen px-5 py-16 text-white">  
       <div className="mx-auto max-w-3xl">
         <header className="mb-12 text-center">
-          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#edbcf0]">
+          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#c6a53a]">
             SetsByEsther
           </p>
           <h1 className="text-4xl font-semibold md:text-5xl">
@@ -329,19 +329,19 @@ export default function BookingPage() {
                   }}
                   className={`rounded-2xl border p-5 text-left transition ${
                     service === item.id
-                      ? "border-[#edbcf0] bg-[#edbcf0]/10"
-                      : "border-white/15 bg-white/5 hover:border-[#edbcf0]/60"
+                      ? "border-[#c6a53a] bg-[#c6a53a]/10"
+                      : "border-white/15 bg-white/5 hover:border-[#c6a53a]/60"
                   }`}
                 >
                   <h3 className="font-semibold">{item.name}</h3>
-                  <p className="mt-3 text-xl text-[#edbcf0]">
+                  <p className="mt-3 text-xl text-[#c6a53a]">
                     ${item.price}
                   </p>
                   <p className="mt-1 text-xs text-gray-400">
                     {item.duration_minutes} minutes
                   </p>
                   {service === item.id && (
-                    <p className="mt-2 text-xs text-[#edbcf0]">
+                    <p className="mt-2 text-xs text-[#c6a53a]">
                       Selected ✓
                     </p>
                   )}
@@ -370,8 +370,8 @@ export default function BookingPage() {
                   }}
                   className={`rounded-xl border px-4 py-4 transition ${
                     length === item
-                      ? "border-[#64d2f1] bg-[#64d2f1]/10 text-[#64d2f1]"
-                      : "border-white/15 bg-white/5 hover:border-[#64d2f1]/60"
+                      ? "border-[#c6a53a] bg-[#c6a53a]/10 text-[#c6a53a]"
+                      : "border-white/15 bg-white/5 hover:border-[#c6a53a]/60"
                   }`}
                 >
                   {item}
@@ -400,8 +400,8 @@ export default function BookingPage() {
                   }}
                   className={`rounded-2xl border p-5 text-left transition ${
                     style === item.id
-                      ? "border-[#edbcf0] bg-[#edbcf0]/10"
-                      : "border-white/15 bg-white/5 hover:border-[#edbcf0]/60"
+                      ? "border-[#c6a53a] bg-[#c6a53a]/10"
+                      : "border-white/15 bg-white/5 hover:border-[#c6a53a]/60"
                   }`}
                 >
                   <h3 className="font-semibold">{item.name}</h3>
@@ -423,7 +423,7 @@ export default function BookingPage() {
             </p>
 
             <label
-              className={`flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#edbcf0]/50 bg-white/5 px-6 py-10 text-center transition hover:bg-white/10 ${
+              className={`flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#c6a53a]/50 bg-white/5 px-6 py-10 text-center transition hover:bg-white/10 ${
                 photos.length >= 5
                   ? "cursor-not-allowed opacity-50"
                   : "cursor-pointer"
@@ -485,7 +485,7 @@ export default function BookingPage() {
                 onChange={(event) => setComments(event.target.value)}
                 placeholder="Tell me about your design, preferred colors, nail shape, or anything else I should know..."
                 rows={5}
-                className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#edbcf0]"
+                className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#c6a53a]"
               />
             </div>
           </section>
@@ -517,7 +517,7 @@ export default function BookingPage() {
                   setAppointmentDate(event.target.value);
                   setSelectedTime("");
                 }}
-                className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition focus:border-[#edbcf0]"
+                className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition focus:border-[#c6a53a]"
               />
             </div>
 
@@ -559,8 +559,8 @@ export default function BookingPage() {
                           onClick={() => setSelectedTime(time)}
                           className={`rounded-xl border px-4 py-3 transition ${
                             selectedTime === time
-                              ? "border-[#64d2f1] bg-[#64d2f1]/10 text-[#64d2f1]"
-                              : "border-white/15 bg-white/5 hover:border-[#64d2f1]/60"
+                              ? "border-[#c6a53a] bg-[#c6a53a]/10 text-[#c6a53a]"
+                              : "border-white/15 bg-white/5 hover:border-[#c6a53a]/60"
                           }`}
                         >
                           {formatSlotTime(time)}
@@ -599,7 +599,7 @@ export default function BookingPage() {
                   onChange={(event) => setCustomerName(event.target.value)}
                   required
                   placeholder="Your full name"
-                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#edbcf0]"
+                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#c6a53a]"
                 />
               </div>
 
@@ -613,7 +613,7 @@ export default function BookingPage() {
                   onChange={(event) => setCustomerEmail(event.target.value)}
                   required
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#edbcf0]"
+                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#c6a53a]"
                 />
               </div>
 
@@ -629,7 +629,7 @@ export default function BookingPage() {
                   value={customerPhone}
                   onChange={(event) => setCustomerPhone(event.target.value)}
                   placeholder="Your phone number"
-                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#edbcf0]"
+                  className="w-full rounded-xl border border-white/15 bg-white/5 p-4 text-white outline-none transition placeholder:text-gray-500 focus:border-[#c6a53a]"
                 />
               </div>
             </div>
@@ -637,7 +637,7 @@ export default function BookingPage() {
 
 
           {/* Current selection summary */}
-          <section className="rounded-2xl border border-[#edbcf0]/30 bg-white/5 p-6">
+          <section className="rounded-2xl border border-[#c6a53a]/30 bg-white/5 p-6">
             <h2 className="mb-4 text-xl font-semibold">
               Your Selection
             </h2>
@@ -666,7 +666,7 @@ export default function BookingPage() {
                 href="/policies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#edbcf0] underline underline-offset-4 transition hover:text-[#64d2f1]"
+                className="text-[#c6a53a] underline underline-offset-4 transition hover:text-[#c6a53a]"
               >
                 Booking Policies
               </a>
@@ -678,7 +678,7 @@ export default function BookingPage() {
                 className={`mb-4 text-sm ${
                   validationMessage.startsWith("Please")
                     ? "text-red-400"
-                    : "text-[#edbcf0]"
+                    : "text-[#c6a53a]"
                 }`}
               >
                 {validationMessage}
@@ -691,8 +691,8 @@ export default function BookingPage() {
             )}
 
             {requestSubmitted && (
-              <div className="mb-6 rounded-2xl border border-[#64d2f1]/40 bg-[#64d2f1]/10 p-6">
-                <h3 className="text-xl font-semibold text-[#64d2f1]">
+              <div className="mb-6 rounded-2xl border border-[#c6a53a]/40 bg-[#c6a53a]/10 p-6">
+                <h3 className="text-xl font-semibold text-[#c6a53a]">
                   Appointment Request Received!
                 </h3>
                 <p className="mt-3 text-sm text-gray-300">
@@ -706,7 +706,7 @@ export default function BookingPage() {
               type="button"
               onClick={handleContinue}
               disabled={isSubmitting || requestSubmitted}
-              className="w-full rounded-xl border border-[#edbcf0] bg-[#edbcf0]/10 px-6 py-4 font-semibold text-white transition hover:bg-[#edbcf0]/20 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:min-w-64"
+              className="w-full rounded-xl border border-[#c6a53a] bg-[#c6a53a]/10 px-6 py-4 font-semibold text-white transition hover:bg-[#c6a53a]/20 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:min-w-64"
             >
               {isSubmitting
                 ? "Submitting Request..."

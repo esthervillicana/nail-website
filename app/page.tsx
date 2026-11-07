@@ -72,14 +72,13 @@ export default function Home() {
   };
 
   return (
-    <main className={`${playfair.className} relative min-h-screen flex flex-col items-center`}>
-
-      <a
+<main className={`${playfair.className} relative isolate flex flex-col items-center`}>
+        <a
   href="https://www.instagram.com/setsbyesther"
   target="_blank"
   rel="noopener noreferrer"
   className="
-    fixed bottom-6 right-6 
+    fixed bottom-2 right-6 
     z-50
     w-12 h-12
     rounded-full 
@@ -102,38 +101,9 @@ export default function Home() {
 </a>
       
 
-      {/* Background */}
-      <div className="absolute inset-0 z-[-1]">
-        <div className="absolute inset-0 bg-black" />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(circle at 25% 25%, #edbcf0, transparent 40%),
-              radial-gradient(circle at 75% 40%, #64d2f1, transparent 50%),
-              radial-gradient(circle at 25% 70%, #ff4c4c, transparent 50%)
-            `,
-            mixBlendMode: "screen",
-            filter: "blur(80px)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(circle at 40% 60%, #ffd700, transparent 30%),
-              radial-gradient(circle at 60% 35%, #ffb84c, transparent 25%)
-            `,
-            mixBlendMode: "screen",
-            filter: "blur(100px)",
-          }}
-        />
-      </div>
 
       {/* Content card */}
-      <section className="flex items-center justify-center 
-                  pt-16 sm:pt-20 md:pt-24
-                  ">
+      <section className="relative z-10 flex items-center justify-center pt-6 sm:pt-8 md:pt-10">
         <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center tracking-wide leading-tight text-white 
           [ text-shadow:0_1px_0_rgba(255,255,255,0.2) ] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
@@ -161,7 +131,7 @@ export default function Home() {
                     <div className="mt-5">
             <a
               href="/policies"
-              className="text-sm text-white/70 underline underline-offset-4 transition hover:text-[#edbcf0]"
+              className="text-sm text-white/70 underline underline-offset-4 transition hover:text-[#c6a53a]"
             >
               Booking Policies
             </a>
@@ -170,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section className="relative z-10 mt-16  w-full flex justify-center">
+      <section className="relative z-10 mt-6 w-full flex justify-center">
         <div className="w-full max-w-5xl px-4 sm:px-6 md:px-8 relative ">
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl
                         mb-6 sm:mb-8 md:mb-10 text-center ">My Work</h2>

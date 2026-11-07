@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
   return (
     <main className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-md rounded-2xl border border-white/20 bg-black/70 p-8 shadow-xl">
-        <h1 className="mb-2 text-center text-3xl font-semibold text-[#edbcf0]">
+        <h1 className="mb-2 text-center text-3xl font-semibold text-white">
           Admin Login
         </h1>
 
@@ -65,8 +65,7 @@ export default function AdminLoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white outline-none focus:border-[#edbcf0]"
-            />
+              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white outline-none focus:border-[#c6a53a]"            />
           </div>
 
           <div>
@@ -78,8 +77,7 @@ export default function AdminLoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white outline-none focus:border-[#edbcf0]"
-            />
+              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white outline-none focus:border-[#c6a53a]"            />
           </div>
 
           {error && (
@@ -89,8 +87,19 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-[#edbcf0] px-4 py-3 font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
-          >
+            className="w-full rounded-lg px-4 py-3 font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+            style={{
+              background: `linear-gradient(
+                115deg,
+                #6e5a17 0%,
+                #a8872a 20%,
+                #c6a53a 40%,
+                #f2e3a2 50%,
+                #c6a53a 60%,
+                #a8872a 80%,
+                #6e5a17 100%
+              )`,
+            }}          >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>

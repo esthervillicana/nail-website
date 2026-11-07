@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -59,7 +58,7 @@ export default function AdminPage() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-semibold text-[#edbcf0]">
+            <h1 className="text-3xl font-semibold text-white">
               Admin Dashboard
             </h1>
             <p className="mt-2 text-gray-400">
@@ -69,7 +68,7 @@ export default function AdminPage() {
 
           <button
             onClick={handleLogout}
-            className="rounded-lg border border-white/20 px-4 py-2 text-sm text-white transition hover:bg-white/10"
+            className="rounded-lg border border-white/20 px-4 py-2 text-sm text-white transition hover:border-[#c6a53a] hover:bg-white/10 focus:border-[#c6a53a] active:border-[#c6a53a]"
           >
             Log Out
           </button>
@@ -78,31 +77,31 @@ export default function AdminPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           <a
             href="/admin/appointments"
-            className="rounded-xl border border-white/20 bg-white/5 p-6 transition hover:bg-white/10"
-            >
+            className="rounded-xl border border-white/20 bg-white/5 p-6 transition hover:border-[#c6a53a] hover:bg-white/10 focus:border-[#c6a53a] active:border-[#c6a53a]"
+          >
             <h2 className="text-xl font-semibold text-white">
-                Appointments
+              Appointments
             </h2>
             <p className="mt-2 text-sm text-gray-400">
-                Review and manage appointment requests.
+              Review and manage appointment requests.
             </p>
-            <p className="mt-5 text-sm text-[#edbcf0]">
-                Manage Appointments →
+            <p className="mt-5 text-sm text-white">
+              Manage Appointments →
             </p>
           </a>
 
           <a
             href="/admin/availability"
-            className="rounded-xl border border-white/20 bg-white/5 p-6 transition hover:bg-white/10"
-            >
+            className="rounded-xl border border-white/20 bg-white/5 p-6 transition hover:border-[#c6a53a] hover:bg-white/10 focus:border-[#c6a53a] active:border-[#c6a53a]"
+          >
             <h2 className="text-xl font-semibold text-white">
-                Availability
+              Availability
             </h2>
             <p className="mt-2 text-sm text-gray-400">
-                Set your working hours and block unavailable dates.
+              Set your working hours and block unavailable dates.
             </p>
-            <p className="mt-5 text-sm text-[#edbcf0]">
-                Manage Availability →
+            <p className="mt-5 text-sm text-white">
+              Manage Availability →
             </p>
           </a>
         </div>

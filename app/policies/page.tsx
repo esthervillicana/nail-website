@@ -1,8 +1,8 @@
 
 export default function PoliciesPage() {
   return (
-    <main className="min-h-screen px-6 py-16">
-      <div className="mx-auto max-w-3xl">
+<main className="flex-1 px-6 py-8">
+        <div className="mx-auto max-w-3xl">
         <h1 className="mb-4 text-center text-4xl font-bold">
           Booking Policies
         </h1>

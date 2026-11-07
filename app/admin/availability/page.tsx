@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -271,16 +270,16 @@ export default function AvailabilityPage() {
   }
 
   return (
-    <main className="min-h-screen px-6 py-12">
+    <main className="min-h-screen px-6 py-12 text-white">
       <div className="mx-auto max-w-4xl">
         <a
           href="/admin"
-          className="text-sm text-[#edbcf0] hover:underline"
+          className="text-sm text-white transition hover:text-[#c6a53a] hover:underline"
         >
           ← Back to Dashboard
         </a>
 
-        <h1 className="mt-6 text-3xl font-semibold text-[#edbcf0]">
+        <h1 className="mt-6 text-3xl font-semibold text-white">
           Availability
         </h1>
 
@@ -310,7 +309,7 @@ export default function AvailabilityPage() {
               <select
                 value={weekday}
                 onChange={(e) => setWeekday(e.target.value)}
-                className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
               >
                 {weekdays.map((day, index) => (
                   <option key={day} value={index}>
@@ -329,7 +328,7 @@ export default function AvailabilityPage() {
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
                 required
-                className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
               />
             </div>
 
@@ -342,7 +341,7 @@ export default function AvailabilityPage() {
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
                 required
-                className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
               />
             </div>
 
@@ -350,7 +349,19 @@ export default function AvailabilityPage() {
               <button
                 type="submit"
                 disabled={saving}
-                className="w-full rounded-lg bg-[#edbcf0] px-4 py-3 font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
+                className="w-full rounded-lg px-4 py-3 font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                style={{
+                  background: `linear-gradient(
+                    115deg,
+                    #6e5a17 0%,
+                    #a8872a 20%,
+                    #c6a53a 40%,
+                    #f2e3a2 50%,
+                    #c6a53a 60%,
+                    #a8872a 80%,
+                    #6e5a17 100%
+                  )`,
+                }}
               >
                 {saving ? "Adding..." : "Add Hours"}
               </button>
@@ -381,7 +392,7 @@ export default function AvailabilityPage() {
                     key={day}
                     className="rounded-xl border border-white/20 bg-white/5 p-5"
                   >
-                    <h3 className="mb-4 font-semibold text-[#edbcf0]">
+                    <h3 className="mb-4 font-semibold text-white">
                       {day}
                     </h3>
 
@@ -404,7 +415,7 @@ export default function AvailabilityPage() {
                           <div className="flex gap-3">
                             <button
                               onClick={() => handleToggle(item)}
-                              className="text-sm text-[#64d2f1] hover:underline"
+                              className="text-sm text-white transition hover:text-[#c6a53a] hover:underline"
                             >
                               {item.active ? "Deactivate" : "Activate"}
                             </button>
@@ -450,8 +461,7 @@ export default function AvailabilityPage() {
                 value={blockedDate}
                 onChange={(e) => setBlockedDate(e.target.value)}
                 required
-                className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white sm:max-w-xs"
-              />
+                className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"              />
             </div>
 
             <label className="flex items-center gap-3 text-sm text-gray-300">
@@ -459,7 +469,7 @@ export default function AvailabilityPage() {
                 type="checkbox"
                 checked={allDay}
                 onChange={(e) => setAllDay(e.target.checked)}
-                className="h-4 w-4 accent-[#edbcf0]"
+                className="h-4 w-4 accent-[#c6a53a]"
               />
               Block the entire day
             </label>
@@ -475,7 +485,7 @@ export default function AvailabilityPage() {
                     value={blockedStart}
                     onChange={(e) => setBlockedStart(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                    className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
                   />
                 </div>
 
@@ -488,7 +498,7 @@ export default function AvailabilityPage() {
                     value={blockedEnd}
                     onChange={(e) => setBlockedEnd(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                    className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
                   />
                 </div>
               </div>
@@ -503,7 +513,7 @@ export default function AvailabilityPage() {
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 placeholder="e.g. Vacation, personal appointment"
-                className="w-full rounded-lg border border-white/20 bg-black px-3 py-3 text-white"
+                className="w-full rounded-lg border border-white/20 bg-[#38291F] px-3 py-3 text-white outline-none transition focus:border-[#c6a53a]"
               />
               <p className="mt-2 text-xs text-gray-500">
                 This reason is only visible to you in the admin dashboard.
@@ -513,7 +523,19 @@ export default function AvailabilityPage() {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-[#edbcf0] px-6 py-3 font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
+              className="rounded-lg px-6 py-3 font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+              style={{
+                background: `linear-gradient(
+                  115deg,
+                  #6e5a17 0%,
+                  #a8872a 20%,
+                  #c6a53a 40%,
+                  #f2e3a2 50%,
+                  #c6a53a 60%,
+                  #a8872a 80%,
+                  #6e5a17 100%
+                )`,
+              }}
             >
               {saving ? "Saving..." : "Block Date"}
             </button>
@@ -541,7 +563,7 @@ export default function AvailabilityPage() {
                       {formatDate(item.blocked_date)}
                     </p>
 
-                    <p className="mt-1 text-sm text-[#edbcf0]">
+                    <p className="mt-1 text-sm text-white">
                       {item.start_time && item.end_time
                         ? `${item.start_time.slice(0, 5)} – ${item.end_time.slice(0, 5)}`
                         : "Entire day"}

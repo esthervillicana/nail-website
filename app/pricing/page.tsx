@@ -53,13 +53,9 @@ export default function Pricing() {
   return (
     <main
       ref={containerRef}
-      className={`${playfair.className} relative min-h-screen flex flex-col items-center justify-center py-24 px-6 overflow-hidden`}
-    >
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <Image src="/images/pricing.jpg" alt="Nail background" fill priority className="object-cover" />
-      </div>
-      <div className="absolute inset-0 bg-black/60 -z-10" />
+    className={`${playfair.className} relative flex-1 flex flex-col items-center justify-center py-8 px-6 overflow-hidden`}   
+     >
+      
 
       <h1 className="text-5xl font-bold text-white text-center drop-shadow-lg">Pricing</h1>
 
