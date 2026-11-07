@@ -660,6 +660,18 @@ export default function BookingPage() {
 
           {/* Validation and continue */}
           <section className="text-center">
+            <p className="mb-5 text-sm text-gray-400">
+              By submitting a request, you acknowledge our{" "}
+              <a
+                href="/policies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#edbcf0] underline underline-offset-4 transition hover:text-[#64d2f1]"
+              >
+                Booking Policies
+              </a>
+              .
+            </p>
             {validationMessage && (
               <p
                 aria-live="polite"

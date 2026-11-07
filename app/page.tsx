@@ -158,6 +158,14 @@ export default function Home() {
           >
             <span className="relative z-10">View Pricing</span>
           </a>
+                    <div className="mt-5">
+            <a
+              href="/policies"
+              className="text-sm text-white/70 underline underline-offset-4 transition hover:text-[#edbcf0]"
+            >
+              Booking Policies
+            </a>
+          </div>
         </div>
       </section>
 
